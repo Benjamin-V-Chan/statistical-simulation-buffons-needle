@@ -4,7 +4,39 @@
 
 Buffon's Needle is a classical probability problem that estimates the value of $\pi$ by dropping needles on a plane with parallel lines and calculating the proportion that cross the lines. Our project extends this experiment by applying Monte Carlo simulations, analyzing convergence rates, and incorporating various probability distributions.
 
+### **Mathematical Foundation**
 
+Buffon’s Needle involves dropping a needle of length $L$ onto a plane with parallel lines spaced $D$ apart. The probability $P$ that a randomly placed needle crosses a line is given by:
+
+$$P = \frac{2L}{D\pi}$$
+
+If we perform $N$ trials and count the number of crossings $C$, we can estimate $\pi$ as follows:
+
+$$\pi \approx \frac{2L N}{D C}$$
+
+#### **Proof**
+
+Let the center of the needle be $X$, which is uniformly distributed over $[0, D/2]$, and let $\theta$ be the angle of the needle relative to the vertical axis, uniformly distributed over $[0, \pi]$. A crossing occurs if:
+
+$$X \leq \frac{L}{2} \cos(\theta)$$
+
+Integrating over the uniform distributions:
+
+$$P = \int_0^{D/2} \int_0^{\pi} \mathbf{1} \left( X \leq \frac{L}{2} \cos(\theta) \right) \frac{dx}{D/2} \frac{d\theta}{\pi}$$
+
+By solving this integral,
+
+$$P = \frac{2L}{D\pi}$$
+
+Rearranging for $\pi$ yields our estimator formula.
+
+### **Monte Carlo Variations**
+
+By changing the distributions of $X$ and $\theta$, we can analyze different stochastic processes. In our simulation, we incorporate:
+
+- **Uniform Distribution:** Classical Buffon's Needle setup.
+- **Gaussian Distribution:** To model real-world noise in data collection.
+- **Exponential Distribution:** To model random spatial placements under different conditions.
 
 ## Folder Structure
 ```
